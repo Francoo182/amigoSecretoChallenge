@@ -10,6 +10,7 @@ function agregarAmigo(){
         amigos.unshift(a);
         a.value= "";
         console.log(amigos);
+        mostrarAmigos();
     }
 }
 
@@ -19,7 +20,7 @@ function darTXT(elemento,texto){
     elementoHtml.innerHTML = texto;
 }
 
-//Funcion para sortear amigo 
+//Funcion para sortear amigo
 function sortear(){
     let n = amigos.length;
     //En caso de que haya mas de 1 amigo se considera que podemos jugar al amigo imaginario
@@ -32,5 +33,11 @@ function sortear(){
 
 //Mostrar amigos por pantalla
 function mostrarAmigos(){
-    darTXT(`#listaAmigos`, `${amigos}`)
+    let list = document.getElementById(`listaAmigos`);
+    list.innerHTML ="";
+    for (let i=0; i<amigos.length;i++){
+        const nuevoElemento = document.createElement(`li`);
+        nuevoElemento.textContent= amigos[i];
+        list.appendChild(nuevoElemento);
+    }
 }
