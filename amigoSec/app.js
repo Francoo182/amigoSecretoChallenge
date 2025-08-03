@@ -8,8 +8,7 @@ function agregarAmigo(){
     }
     else {
         amigos.unshift(a);
-        a.value= "";
-        console.log(amigos);
+        limpiarTXT();
         mostrarAmigos();
     }
 }
@@ -20,13 +19,16 @@ function darTXT(elemento,texto){
     elementoHtml.innerHTML = texto;
 }
 
+function limpiarTXT(){
+    document.getElementById('amigo').value = ``;
+}
 //Funcion para sortear amigo
 function sortear(){
     let n = amigos.length;
     //En caso de que haya mas de 1 amigo se considera que podemos jugar al amigo imaginario
     if (n>1){
         let amigSec = Math.floor(Math.random()*n + 1);
-        return darTXT(`#resultado`, `El amigo secreto es!! ${amigos[amigSec]}`);
+        return darTXT(`#resultado`, `El amigo secreto es!! ${amigos[amigSec-1]}`);
     }
     else return alert("La lista tiene menos de 2 elementos!! ingrese mas elementos para poder sortear")
 }
